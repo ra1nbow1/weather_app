@@ -291,11 +291,12 @@ i img {
 	
 	.weather-container {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
+		align-items: center;
 		text-align: center;
 		font-size: 0.8rem;
 		font-weight: normal;
-		
+		bottom: -20px;
 	}
 
 	.weather-desc {
@@ -309,6 +310,7 @@ i img {
 
 	.weather-temp {
 		display: inline-block;
+		line-height: normal;
 	}
 
 	.weather-desc {
@@ -362,7 +364,7 @@ i img {
 	}
 
 	.weather-temp {
-		margin-top: -100px;
+		margin: 0 10px 0 0;
 		font-size: 1rem;
 	}
 
