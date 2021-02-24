@@ -2,7 +2,7 @@
 Vue weather app
 
 # Технологии
-- Geolocation API
-- Weatherbit API
+- Geolocation API - прогноз на текущий момент
+- Weatherbit API - прогноз на следующие дни
 
 Разработано на Vue.js без применения Vue-cli
