@@ -497,3 +497,19 @@ path {
 	color: #a0a0a0;
 	width: 200px;
 }
+
+a {
+	color: #ffffff;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.link {
+	text-align: center;
+	margin: 20px;
+	font-size: 15px;
+	visibility: hidden;
+}
