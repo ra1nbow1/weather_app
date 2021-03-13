@@ -251,14 +251,65 @@ var app = new Vue({
               11: 'Декабря'
           }
 
+          var icons = { // альтернативные иконки погодных условий
+              200: 'flaticon-067-storm-6', // Thunderstorm with light rain
+              201: 'flaticon-069-storm-4', // Thunderstorm with rain
+              202: 'flaticon-071-storm-3', // Thunderstorm with heavy rain
+              230: 'flaticon-037-storm-10', // Thunderstorm with light drizzle
+              231: 'flaticon-037-storm-10', // Thunderstorm with drizzle
+              232: 'flaticon-037-storm-10', // Thunderstorm with heavy drizzle
+              233: 'flaticon-037-storm-10', // Thunderstorm with Hail
+
+              300: 'flaticon-009-rain-26', // Light Drizzle
+              301: 'flaticon-009-rain-26', // Drizzle
+              302: 'flaticon-009-rain-26', // Heavy Drizzle
+
+              500: 'flaticon-012-rain-24', // Light Rain
+              501: 'flaticon-012-rain-24', // Moderate Rain
+              502: 'flaticon-015-rain-23', // Heavy Rain
+              511: 'flaticon-012-rain-24', // Freezing rain
+              520: 'flaticon-010-rain-25', // Light shower rain
+              521: 'flaticon-012-rain-24', // Shower rain
+              522: 'flaticon-012-rain-24', // Heavy shower rain
+
+              600: 'flaticon-085-snow-1', // Light snow
+              601: 'flaticon-093-snow', // Snow
+              602: 'flaticon-066-snow-2', // Heavy Snow
+              610: 'flaticon-100-rain-3', // Mix snow/rain
+
+              611: 'flaticon-004-snow-7', // Sleet
+              612: 'flaticon-003-snow-8', // Heavy sleet
+
+              621: 'flaticon-035-snow-5', // Snow shower
+              622: 'flaticon-066-snow-2', // Heavy snow shower
+              623: 'flaticon-066-snow-2', // Flurries
+
+              700: 'flaticon-014-cloud-8', // Mist
+              711: 'flaticon-014-cloud-8', // Smoke
+              721: 'flaticon-014-cloud-8', // Haze
+              731: 'flaticon-014-cloud-8', // Sand/dust
+              741: 'flaticon-014-cloud-8', // Fog
+              751: 'flaticon-014-cloud-8', // Freezing Fog
+
+              800: 'flaticon-108-sun-1', // Clear sky
+              801: 'flaticon-025-cloudy-day', // Few clouds
+              802: 'flaticon-033-cloud-7', // Scattered clouds
+              803: 'flaticon-011-cloudy-11', // Broken clouds
+              804: 'flaticon-033-cloud-7', // Overcast clouds
+
+              900: 'flaticon-102-smartphone', // Unknown Precipitation
+
+          }
+
           this.today.dotw = shortdotw[weekNumber]; // переводим текущий день из цифры в короткое название
           this.today.dotw_full = daysOfTheWeek[weekNumber] // переводим текущий день из цифры в полное название
           this.today.day = parseInt(info.data[0].valid_date.slice(8)) // получаем строку с датой ГГГГ-ММ-ДД, обрезаем ее, получаем день, переводим строку в число
           this.today.month = months[parseInt(info.data[0].valid_date.slice(5).slice(0, 2)) - 1]; // выбираем из массива значение, индекс которго равен числовому значению обрезанной строки с датой - месяц
           this.today.year = parseInt(info.data[0].valid_date.slice(0, 4)); // получаем строку с датой ГГГ-ММ-ДД, обрезаем ее, получаем год, переводим строку в число
           this.today.city = info.city_name; // получаем город
+            if (info.city_name == 'Perm') { this.today.city = 'Sperm'} // Смешной программистсткий юмор
           this.today.country = info.country_code; // получаем сокращение страны
-          this.today.icon = 'https://www.weatherbit.io/static/img/icons/' + info.data[0].weather.icon + '.png'; // собираем строку для пути картинки
+          this.today.icon = icons[info.data[0].weather.code]; // получаем код погодных условий, передаем в массив
           this.today.temperature = Math.round(info.data[0].temp); // получаем и округляем температуру
           this.today.max_temperature = Math.round(info.data[0].max_temp) // получаем и округляем максимальную температуру
           this.today.description = info.data[0].weather.description; // получаем погодные условия
@@ -279,7 +330,7 @@ var app = new Vue({
           this.nextDay.year = parseInt(info.data[1].valid_date.slice(0, 4));
           this.nextDay.city = info.city_name;
           this.nextDay.country = info.country_code;
-          this.nextDay.icon = 'https://www.weatherbit.io/static/img/icons/' + info.data[1].weather.icon + '.png';
+          this.nextDay.icon = icons[info.data[1].weather.code];
           this.nextDay.temperature = Math.round(info.data[1].temp);
           this.nextDay.max_temperature = Math.round(info.data[1].max_temp);
           this.nextDay.description = info.data[1].weather.description;
@@ -297,7 +348,7 @@ var app = new Vue({
           this.next2Day.year = parseInt(info.data[2].valid_date.slice(0, 4));
           this.next2Day.city = info.city_name;
           this.next2Day.country = info.country_code;
-          this.next2Day.icon = 'https://www.weatherbit.io/static/img/icons/' + info.data[2].weather.icon + '.png';
+          this.next2Day.icon = icons[info.data[2].weather.code];
           this.next2Day.temperature = Math.round(info.data[2].temp);
           this.next2Day.max_temperature = Math.round(info.data[2].max_temp);
           this.next2Day.description = info.data[2].weather.description;
@@ -315,7 +366,7 @@ var app = new Vue({
           this.next3Day.year = parseInt(info.data[3].valid_date.slice(0, 4));
           this.next3Day.city = info.city_name;
           this.next3Day.country = info.country_code;
-          this.next3Day.icon = 'https://www.weatherbit.io/static/img/icons/' + info.data[3].weather.icon + '.png';
+          this.next3Day.icon = icons[info.data[3].weather.code];
           this.next3Day.temperature = Math.round(info.data[3].temp);
           this.next3Day.max_temperature = Math.round(info.data[3].max_temp);
           this.next3Day.description = info.data[3].weather.description;
@@ -333,7 +384,7 @@ var app = new Vue({
           this.next4Day.year = parseInt(info.data[4].valid_date.slice(0, 4));
           this.next4Day.city = info.city_name;
           this.next4Day.country = info.country_code;
-          this.next4Day.icon = 'https://www.weatherbit.io/static/img/icons/' + info.data[4].weather.icon + '.png';
+          this.next4Day.icon = icons[info.data[4].weather.code];
           this.next4Day.temperature = Math.round(info.data[4].temp);
           this.next4Day.max_temperature = Math.round(info.data[4].max_temp);
           this.next4Day.description = info.data[4].weather.description;

@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="icons/flaticon.css">
     <title>Прогноз погоды</title>
 
     <link rel="shortcut icon" href="/barcode.ico" type="image/x-icon">
 </head>
 <body>
-    
+
+  
 <div class="preloader" style="opacity: 1; ">
   <svg version="1.1" id="sun" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="10px" height="10px" viewBox="0 0 10 10" enable-background="new 0 0 10 10" xml:space="preserve" style="opacity: 1; margin-left: 0px; margin-top: 0px;">
     <g>
@@ -58,7 +60,7 @@
       <div class="date-container">
         <h2 class="date-dayname">{{ today.dotw_full }}</h2><span class="date-day">{{today.day}} {{ today.month }} {{ today.year}}</span><i class="location-icon" data-feather="map-pin"></i><span class="location">{{ today.city }}, {{ today.country }}</span>
       </div>
-      <div class="weather-container"><i class="weather-icon" data-feather="sun"><img :src="today.icon" alt="weather icon"></i>
+      <div class="weather-container"><i :class="today.icon" data-feather="sun"></i>
         <h1 class="weather-temp">{{ today.temperature }}°C</h1>
         <h3 class="weather-desc">{{ today.description }}</h3>
       </div>
@@ -89,10 +91,10 @@
       </div>
       <div class="week-container">
         <ul class="week-list">
-          <li @click="changeDay(1)" class=""><i class="day-icon" data-feather="sun"><img :src="nextDay.icon" alt="weather icon"></i><span class="day-name">{{ nextDay.dotw }}</span><span class="day-temp">{{ nextDay.temperature }}°C</span></li>
-          <li @click="changeDay(2)"><i class="day-icon" data-feather="cloud"><img :src="next2Day.icon" alt="weather icon"></i><span class="day-name">{{ next2Day.dotw }}</span><span class="day-temp">{{ next2Day.temperature }}°C</span></li>
-          <li @click="changeDay(3)"><i class="day-icon" data-feather="cloud-snow"><img :src="next3Day.icon" alt="weather icon"></i><span class="day-name">{{ next3Day.dotw }}</span><span class="day-temp">{{ next3Day.temperature }}°C</span></li>
-          <li @click="changeDay(4)"><i class="day-icon" data-feather="cloud-rain"><img :src="next4Day.icon" alt="weather icon"></i><span class="day-name">{{ next4Day.dotw }}</span><span class="day-temp">{{ next4Day.temperature }}°C</span></li>
+          <li @click="changeDay(1)" class=""><i :class="nextDay.icon" data-feather="sun"></i><span class="day-name">{{ nextDay.dotw }}</span><span class="day-temp">{{ nextDay.temperature }}°C</span></li>
+          <li @click="changeDay(2)"><i :class="next2Day.icon" data-feather="sun"></i><span class="day-name">{{ next2Day.dotw }}</span><span class="day-temp">{{ next2Day.temperature }}°C</span></li>
+          <li @click="changeDay(3)"><i :class="next3Day.icon" data-feather="sun"></i><span class="day-name">{{ next3Day.dotw }}</span><span class="day-temp">{{ next3Day.temperature }}°C</span></li>
+          <li @click="changeDay(4)"><i :class="next4Day.icon" data-feather="sun"></i><span class="day-name">{{ next4Day.dotw }}</span><span class="day-temp">{{ next4Day.temperature }}°C</span></li>
           <div class="clear"></div>
         </ul>
       </div>
